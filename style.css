@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.watercolor_bg {
+    width: auto;
+    height: 100vh;
+    background: url("/images/watercolor_bg.png") 50% 50% no-repeat;
+    background-size: cover;
+}
+
+.face {
+    width: auto;
+    height: 100vh;
+    background: no-repeat url("/images/face.png");
+    background-position: 50% 50%;
+    background-size: contain;
+    animation: face 0.5s ease-in-out;
+}
+
+@keyframes face {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@media only screen and (max-width: 400px) {
+    body {
+        background: orange;
+    }
+    .face {
+        min-width: 90vw;
+    }
+}
+
+
+@media only screen and (min-width: 401px) {
+    body {
+        background: lightgreen;
+    }
+    .face {
+        margin-top: -10vh;
+        height: 120vh;
+    }
+}
