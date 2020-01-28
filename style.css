@@ -17,7 +17,23 @@
     background: no-repeat url("/images/face.png");
     background-position: 50% 50%;
     background-size: contain;
-    animation: face 0.5s ease-in-out;
+    animation: face 1s ease-in-out;
+}
+
+.arc {
+    position: absolute;
+    background-position: 50% 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: arc 1s linear;
+    transform-origin: 50% 50%;
+}
+
+.arc1 { background-image: url("/images/arc1.png"); }
+
+.arc2 { 
+    background-image: url("/images/arc2.png");
+    animation-direction: reverse;
 }
 
 @keyframes face {
@@ -25,22 +41,38 @@
     to {opacity: 1;}
 }
 
+@keyframes arc {
+    from {transform: rotate(1deg);}
+    to {transform: rotate(360deg);}
+}
+
 @media only screen and (max-width: 400px) {
     body {
-        background: orange;
+        /* background: rgba(255, 166, 0, 0.428); */
     }
     .face {
         min-width: 90vw;
     }
+    .arc1, .arc2 {
+        top: calc(50vh - 24.5vh);
+        left: calc(50vw - 24vh);
+        width: 48vh;
+        height: 48vh;       
+    }
 }
-
 
 @media only screen and (min-width: 401px) {
     body {
-        background: lightgreen;
+       /* background: #90ee9074; */
     }
     .face {
         margin-top: -10vh;
         height: 120vh;
+    }
+    .arc1, .arc2 {
+        top: calc(50vh - 29vh);
+        left: calc(50vw - 28vh);
+        width: 57vh;
+        height: 57vh;   
     }
 }
