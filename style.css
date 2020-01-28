@@ -9,15 +9,17 @@
     height: 100vh;
     background: url("/images/watercolor_bg.png") 50% 50% no-repeat;
     background-size: cover;
+    animation: bg 1.5s linear;
 }
 
 .face {
+    position: relative;
     width: auto;
     height: 100vh;
     background: no-repeat url("/images/face.png");
     background-position: 50% 50%;
     background-size: contain;
-    animation: face 1s ease-in-out;
+    animation: face 1.5s linear;
 }
 
 .arc {
@@ -25,8 +27,15 @@
     background-position: 50% 50%;
     background-size: contain;
     background-repeat: no-repeat;
-    animation: arc 1s linear;
+    animation: arc 1.5s ease-out;
     transform-origin: 50% 50%;
+}
+
+.line {
+    position: absolute;
+    background-position: 50% 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .arc1 { background-image: url("/images/arc1.png"); }
@@ -36,14 +45,19 @@
     animation-direction: reverse;
 }
 
-@keyframes face {
-    from {opacity: 0;}
-    to {opacity: 1;}
+.lion {
+    background-image: url("/images/line_lion.png");
+    animation: lion ease-in-out 1.05s;
 }
 
-@keyframes arc {
-    from {transform: rotate(1deg);}
-    to {transform: rotate(360deg);}
+.palmtree {
+    background-image: url("/images/line_palmtree.png");
+    animation: palmtree ease-in-out 1.33s;
+}
+
+.watercolor-pink {
+    background-image: url("/images/line_watercolor-pink.png");
+    animation: watercolor-pink ease-in-out 2.1s;
 }
 
 @media only screen and (max-width: 400px) {
@@ -59,11 +73,29 @@
         width: 48vh;
         height: 48vh;       
     }
+    .lion {
+        top: 32vh;
+        left: calc(50vw + 1vh);
+        width: 28vh;
+        height: 28vh;
+    }
+    .palmtree {
+        top: 0vh;
+        left: calc(50vw + 2vh);
+        width: 50vh;
+        height: 50vh;
+    }
+    .watercolor-pink {
+        top: 10vh;
+        left: calc(50vw + 3vh);
+        width: 30vh;
+        height: 30vh;
+    }
 }
 
 @media only screen and (min-width: 401px) {
     body {
-       /* background: #90ee9074; */
+     /*  background: #90ee9074;*/
     }
     .face {
         margin-top: -10vh;
@@ -75,4 +107,59 @@
         width: 57vh;
         height: 57vh;   
     }
+    .lion {
+        top: 20vh;
+        left: calc(50vw + 13vh);
+        width: 34vh;
+        height: 34vh;
+    }
+    .palmtree {
+        top: 2vh;
+        left: calc(50vw + 4vh);
+        width: 50vh;
+        height: 50vh;
+    }
+    .watercolor-pink {
+        top: 6vh;
+        left: calc(50vw + 11vh);
+        width: 32vh;
+        height: 32vh;
+    }
+}
+
+@keyframes bg {
+    from { transform: scale(98%) }
+    to { transform: scale(100%); }
+}
+
+@keyframes face {
+    0% { filter: grayscale(100%) blur(5px); }
+    65% { filter: grayscale(70%) blur(1px); }
+    100% { filter: grayscale(0) blur(0); }
+}
+
+@keyframes arc {
+    from { transform: rotate(1deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes lion {
+    from { transform: translate(-100vh, 100vh); }
+    to { transform: translate(0, 0); }
+}
+
+@keyframes palmtree {
+    0% { transform: translate(-100vh, 100vh); }
+    25% { transform: translate(-100vh, 100vh); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes watercolor-pink {
+    0% { transform: translate(-100vh, 100vh); }
+    45% { transform: translate(-100vh, 100vh); }
+    50% { transform: translate(-95vh, 95vh); }
+    78% { transform: translate(6vh, -6vh); }    
+    87% { transform: translate(-1.2vh, 1.2vh); }
+    95% { transform: translate(0.7vh, -0.7vh); }
+    100% { transform: translate(0, 0); }
 }
