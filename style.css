@@ -117,6 +117,14 @@
 #digit7 { transform: rotate(17deg) translateY(1.2vh); }
 #digit8 { transform: rotate(22deg) translateY(2vh); }
 
+#date {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 1vw;
+    font-family: "Myriad";
+}
+
 @media only screen and (max-width: 400px) {
     body {
         /* background: rgba(255, 166, 0, 0.428); */
@@ -196,6 +204,9 @@
     .clock-digit {
         width: 16.5%;
         height: 100%;
+    }
+    #date {
+        font-size: 2vh;
     }
 }
 
@@ -279,6 +290,9 @@
     .clock-digit {
         width: 16.5%;
         height: 100%;
+    }
+    #date {
+        font-size: 2.2vh;
     }
 }
 
