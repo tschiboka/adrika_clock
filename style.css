@@ -10,6 +10,7 @@
 }
 
 .watercolor_bg {
+    display: none;
     width: auto;
     height: 100vh;
     background: url("/images/watercolor_bg.png") 50% 50% no-repeat;
@@ -284,7 +285,7 @@
         left: calc(50vw - 10vh);
         height: 8vh;
         width: 20vh;
-        transform: rotate(-8deg);
+        transform: rotate(-7deg);
         font-size: 2.5vh;
     }
     .clock-digit {
