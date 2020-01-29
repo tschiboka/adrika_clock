@@ -13,7 +13,7 @@
     display: none;
     width: auto;
     height: 100vh;
-    background: url("/images/watercolor_bg.png") 50% 50% no-repeat;
+    background: 50% 50% no-repeat;
     background-size: cover;
     animation: bg 1.5s linear;
 }
@@ -22,7 +22,7 @@
     position: relative;
     width: auto;
     height: 100vh;
-    background: no-repeat url("/images/face.png");
+    background: no-repeat;
     background-position: 50% 50%;
     background-size: contain;
     animation: face 1.5s linear;
@@ -41,58 +41,27 @@
 
 .butterfly { animation: butterfly 5s linear infinite; }
 
-.butterfly-blue { background-image: url("/images/butterfly_blue.png"); }
-
 .butterfly-purple { 
-    background-image: url("/images/butterfly_purple.png"); 
     animation-delay: -0.75s;
     animation-duration: 4s;
 }
 
-.arc1 { background-image: url("/images/arc1.png"); }
+.arc2 { animation-direction: reverse; }
 
-.arc2 { 
-    background-image: url("/images/arc2.png");
-    animation-direction: reverse;
-}
+.lion { animation: lion ease-in-out 1.05s; }
 
-.lion {
-    background-image: url("/images/line_lion.png");
-    animation: lion ease-in-out 1.05s;
-}
+.palmtree { animation: palmtree ease-in-out 1.33s; }
 
-.palmtree {
-    background-image: url("/images/line_palmtree.png");
-    animation: palmtree ease-in-out 1.33s;
-}
+.watercolor-pink { animation: watercolor-pink ease-in-out 2.1s; }
 
-.watercolor-pink {
-    background-image: url("/images/line_watercolor-pink.png");
-    animation: watercolor-pink ease-in-out 2.1s;
-}
+.nails { animation: nail ease-in-out 1.7s; }
 
-.nails {
-    background-image: url("/images/line_nails.png");
-    animation: nail ease-in-out 1.7s;
-}
+.galaxy { animation: galaxy ease-out 2.33s -1s; }
 
-.galaxy {
-    background-image: url("/images/line_galaxy.png");
-    animation: galaxy ease-out 2.33s -1s;
-}
+.clockface { animation: clockface 1s linear infinite; }
 
-.clockface {
+.clock-helperline, .clockface {
     position: absolute;
-    background-image: url("/images/analog-clockface.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    animation: clockface 1s linear infinite;
-}
-
-.clock-helperline {
-    position: absolute;
-    background-image: url("/images/clock_helperline.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -110,12 +79,19 @@
 }
 
 #digit1 { transform: rotate(-7.5deg) translateY(-0.1vh); }
+
 #digit2 { transform: rotate(-2.5deg) translateY(-0.4vh); }
+
 #digit3 { transform: rotate(1.5deg) translateY(-0.5vh); }
+
 #digit4 { transform: rotate(5.5deg) translateY(-0.4vh); }
+
 #digit5 { transform: rotate(9.5deg) translateY(-0.1vh); }
+
 #digit6 { transform: rotate(12.5deg) translateY(0.5vh); }
+
 #digit7 { transform: rotate(17deg) translateY(1.2vh); }
+
 #digit8 { transform: rotate(22deg) translateY(2vh); }
 
 #date {

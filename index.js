@@ -16,21 +16,41 @@ function setTime({ hour, min, sec } = getTime()) {
     timeDigits.map((digit, i) => document.getElementById(`digit${i + 1}`).innerHTML = digit);
 }
 
-function loadImage(url, domElem, callback) {
+function loadImage(selector, url, callback) {
     try {
         const img = new Image();
         img.src = url;
         img.onload = function () {
-            const elem = document.querySelector(domElem);
+            const elem = document.querySelector(selector);
             elem.style.backgroundImage = `url(${this.src})`;
-            console.log(elem);
+            typeof callback === 'function' && callback();
         };
         return img;
     } catch (error) { console.log(error) }
 }
 
+function preLoadImages() {
+    const imageObjs = [
+        { selector: ".watercolor_bg",/*    */ url: "/images/watercolor_bg.png" },
+        { selector: ".clockface", /*       */ url: "/images/analog-clockface.png" },
+        { selector: ".clock-helperline",/* */ url: "/images/clock_helperline.png" },
+        { selector: ".arc1",/*             */ url: "/images/arc1.png" },
+        { selector: ".arc2",/*             */ url: "/images/arc2.png" },
+        { selector: ".lion",/*             */ url: "/images/line_lion.png" },
+        { selector: ".palmtree",/*         */ url: "/images/line_palmtree.png" },
+        { selector: ".watercolor-pink",/*  */ url: "/images/line_watercolor-pink.png" },
+        { selector: ".nails",/*            */ url: "/images/line_nails.png" },
+        { selector: ".galaxy",/*           */ url: "/images/line_galaxy.png" },
+        { selector: ".butterfly-blue",/*   */ url: "/images/butterfly_blue.png" },
+        { selector: ".butterfly-purple",/* */ url: "/images/butterfly_purple.png" },
+        { selector: ".face",/*             */ url: "/images/face.png" },
+    ];
+
+    imageObjs.forEach((imgObj, i) => loadImage(imgObj.selector, imgObj.url));
+}
+
 function start() {
-    const watercolor_bg = loadImage("/images/watercolor_bg.png", ".watercolor_bg", () => console.log("watercolor_bg img loaded"));
+    preLoadImages();
     setDate();
     setTime();
 
