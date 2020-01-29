@@ -16,6 +16,20 @@ function setTime({ hour, min, sec } = getTime()) {
     timeDigits.map((digit, i) => document.getElementById(`digit${i + 1}`).innerHTML = digit);
 }
 
+function introProgressBar(tot, curr) {
+    const calcPercentage = () => ((100 / tot) * curr).toFixed(2);
+    const percent = calcPercentage(tot, curr);
+
+    document.getElementById("intro__progress").style.width = percent + "%";
+    document.getElementById("intro__progress__txt").innerHTML = addZeros(percent) + "%";
+
+    if (percent <= 100) {
+        document.querySelector(".watercolor_bg").style.display = "block";
+        document.querySelector(".intro__progressbar").style.display = "none";
+    }
+}
+
+
 function loadImage(selector, url, callback) {
     try {
         const img = new Image();
@@ -45,8 +59,9 @@ function preLoadImages() {
         { selector: ".butterfly-purple",/* */ url: "/images/butterfly_purple.png" },
         { selector: ".face",/*             */ url: "/images/face.png" },
     ];
+    let imagesLoaded = 0;
 
-    imageObjs.forEach((imgObj, i) => loadImage(imgObj.selector, imgObj.url));
+    imageObjs.forEach((imgObj, i, a) => loadImage(imgObj.selector, imgObj.url, () => introProgressBar(a.length, ++imagesLoaded)));
 }
 
 function start() {

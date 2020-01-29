@@ -9,6 +9,40 @@
     overflow: hidden;
 }
 
+body { font-family: "Myriad"; }
+
+.intro__progressbar {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro__progressbar h1 {
+    font-size: 2.5vh;
+    color: #272727;
+}
+
+.loadingprogress__frame {
+    width: 33.3vw;
+    min-width: 300px;
+    height: 1vh;
+    border: 2px solid #272727;
+    border-radius: 5px;
+}
+
+#intro__progress {
+    height: 100%;
+    width: 0;
+    background-color: #93869acc;
+    border-radius: 4px;
+}
+
 .watercolor_bg {
     display: none;
     width: auto;
@@ -72,7 +106,6 @@
     top: 0;
     left: 0;
     display: flex;
-    font-family: "Myriad";
     text-align: center;
     text-shadow: 0px 4px 2.5px black, 0px -1px #2727273d;
     color: #272727;
@@ -99,7 +132,6 @@
     bottom: 0;
     right: 0;
     padding-right: 1vw;
-    font-family: "Myriad";
 }
 
 @media only screen and (max-width: 400px) {
