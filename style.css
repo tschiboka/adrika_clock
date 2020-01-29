@@ -1,3 +1,8 @@
+@font-face {
+    src: url("/fonts/Mylodon-Light.otf");
+    font-family: "Myriad";
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -75,6 +80,37 @@
     animation: galaxy ease-out 2.33s -1s;
 }
 
+.clockface {
+    position: absolute;
+    background-image: url("/images/analog-clockface.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: clockface 1s linear infinite;
+}
+
+.clock-helperline {
+    position: absolute;
+    background-image: url("/images/clock_helperline.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.time-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15vh;
+    height: 10vh;
+}
+
+.time {
+    color: #272727;
+    font-size: 3vh;
+    font-family: "Myriad";
+}
+
 @media only screen and (max-width: 400px) {
     body {
         /* background: rgba(255, 166, 0, 0.428); */
@@ -129,6 +165,19 @@
         left: calc(50vw - 22vh);
         width: 3.5vh;
         height: 3.5vh;
+    }
+    .clockface {
+        width: 52vh;
+        height: 52vh;
+        top: 23.5vh;
+        left: calc(50vw - 26vh);
+    }
+    .clock-helperline {
+        top: 24vh;
+        left: calc(50vw - 28vh);
+        width: 20vh;
+        height: 20vh;
+        transform: rotate(-9deg);
     }
 }
 
@@ -187,6 +236,19 @@
         left: calc(50vw - 30vh);
         width: 4.5vh;
         height: 4.5vh;
+    }
+    .clockface {
+        width: 64vh;
+        height: 64vh;
+        top: 17.5vh;
+        left: calc(50vw - 32vh);
+    }
+    .clock-helperline {
+        top: 18vh;
+        left: calc(50vw - 37vh);
+        width: 26vh;
+        height: 26vh;
+        transform: rotate(-12deg);
     }
 }
 
@@ -248,4 +310,11 @@
     60% { transform: translate(1px, 1px) rotate(-0.5deg) rotate3d(0, 0, 0, 0); }
     80% { transform: translate(-1px, 1px) rotate(0.5deg) rotate3d(1, 1, 1, -15deg); }
     100% { transform: translate(0, 0) rotate(0.5deg) rotate3d(1, 1, 1, 15deg); }
+}
+
+@keyframes clockface {
+    0% { transform: rotate(0); }
+    90% { transform: rotate(0); }
+    95% { transform: rotate(-7deg); }
+    100% { transform: rotate(-6deg); }
 }
