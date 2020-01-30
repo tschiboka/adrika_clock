@@ -1,3 +1,4 @@
+// DATE AND TIME FUNCS
 const addZeros = num => (Number(num) <= 9 && Number(num) >= 0 ? "0" : "") + num; // eg: 1 becomes 01
 
 const getDate = (date = new Date) => ({ day: date.getDate(), month: date.getMonth() + 1, year: date.getUTCFullYear(), dayOfWeek: date.getDay() });
@@ -15,6 +16,8 @@ function setTime({ hour, min, sec } = getTime()) {
 
     timeDigits.map((digit, i) => document.getElementById(`digit${i + 1}`).innerHTML = digit);
 }
+
+// LOAD OPTIMALISATION
 
 function introProgressBar(tot, curr) {
     const calcPercentage = () => ((100 / tot) * curr).toFixed(2);
@@ -61,23 +64,17 @@ function preLoadImages() {
         { selector: ".butterfly-blue",/*   */ url: "images/butterfly_blue.png" },
         { selector: ".butterfly-purple",/* */ url: "images/butterfly_purple.png" },
         { selector: ".face",/*             */ url: "images/face.png" },
-        { selector: "#photo10",/*          */ url: "images/photo10.png" },
-        { selector: "#photo9",/*           */ url: "images/photo9.png" },
-        { selector: "#photo8",/*           */ url: "images/photo8.png" },
-        { selector: "#photo7",/*           */ url: "images/photo7.png" },
-        { selector: "#photo6",/*           */ url: "images/photo6.png" },
-        { selector: "#photo5",/*           */ url: "images/photo5.png" },
-        { selector: "#photo4",/*           */ url: "images/photo4.png" },
-        { selector: "#photo3",/*           */ url: "images/photo3.png" },
-        { selector: "#photo2",/*           */ url: "images/photo2.png" },
-        { selector: "#photo1",/*           */ url: "images/photo1.png" },
+        { selector: "#photo1",/*           */ url: "images/photo1.png" }, // load only the first, to reduce loading time
     ];
     let imagesLoaded = 0;
 
     imageObjs.forEach((imgObj, i, a) => loadImage(imgObj.selector, imgObj.url, () => introProgressBar(a.length, ++imagesLoaded)));
 }
 
+// START AND PHOTO TOGGLING
+
 var currPhoto = 0;
+var photosLoaded = false;
 
 function togglePhotos() {
     currPhoto++;
@@ -94,6 +91,22 @@ function togglePhotos() {
     else {
         document.getElementById("photo-holder").style.visibility = "hidden";
         currPhoto = 0;
+    }
+
+    if (!photosLoaded) {
+        const photos = [
+            { selector: "#photo2", url: "images/photo2.png" },
+            { selector: "#photo3", url: "images/photo3.png" },
+            { selector: "#photo4", url: "images/photo4.png" },
+            { selector: "#photo5", url: "images/photo5.png" },
+            { selector: "#photo6", url: "images/photo6.png" },
+            { selector: "#photo7", url: "images/photo7.png" },
+            { selector: "#photo8", url: "images/photo8.png" },
+            { selector: "#photo9", url: "images/photo9.png" },
+            { selector: "#photo10", url: "images/photo10.png" },
+        ];
+        photos.forEach((imgObj, i, a) => loadImage(imgObj.selector, imgObj.url, () => introProgressBar(a.length, ++imagesLoaded)));
+        photosLoaded = true;
     }
 }
 

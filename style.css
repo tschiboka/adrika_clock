@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-body { font-family: "Myriad"; }
+body { font-family: "Myriad", sans-serif; }
 
 .intro__progressbar {
     position: absolute;
@@ -44,8 +44,12 @@ body { font-family: "Myriad"; }
 }
 
 .watercolor_bg {
+    overflow: hidden; /* Because of unintentional body overflow */
     display: none;
-    width: auto;
+    position: absolute; /* same here */
+    top: 0;
+    left: 0;
+    width: 100vw;
     height: 100vh;
     background: 50% 50% no-repeat;
     background-size: cover;
