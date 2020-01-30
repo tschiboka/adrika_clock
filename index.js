@@ -31,21 +31,16 @@ function introProgressBar(tot, curr) {
 
 
 function loadImage(selector, url, callback) {
-    console.log(selector);
     try {
         const img = new Image();
         img.src = url;
 
         img.onload = function () {
-            const elem = document.querySelector(selector);
-            elem.style.backgroundImage = `url(${this.src})`;
+            document.querySelector(selector).style.backgroundImage = `url(${this.src})`;
             typeof callback === 'function' && callback();
         };
 
-        img.onerror = function () {
-            console.log("FASZ");
-            document.querySelector(".intro__progressbar h1").innerHTML = `ERROR: ${url} NOT FOUND`;
-        }
+        img.onerror = () => document.querySelector(".intro__progressbar h1").innerHTML = `ERROR: ${url} NOT FOUND`;
 
         return img;
     } catch (error) { console.log(error); }
@@ -66,7 +61,7 @@ function preLoadImages() {
         { selector: ".butterfly-blue",/*   */ url: "images/butterfly_blue.png" },
         { selector: ".butterfly-purple",/* */ url: "images/butterfly_purple.png" },
         { selector: ".face",/*             */ url: "images/face.png" },
-        { selector: "#photo10",/*          */ url: "images/photo0.png" },
+        { selector: "#photo10",/*          */ url: "images/photo10.png" },
         { selector: "#photo9",/*           */ url: "images/photo9.png" },
         { selector: "#photo8",/*           */ url: "images/photo8.png" },
         { selector: "#photo7",/*           */ url: "images/photo7.png" },
@@ -82,20 +77,24 @@ function preLoadImages() {
     imageObjs.forEach((imgObj, i, a) => loadImage(imgObj.selector, imgObj.url, () => introProgressBar(a.length, ++imagesLoaded)));
 }
 
-let currPhoto = 0;
+var currPhoto = 0;
 
 function togglePhotos() {
     currPhoto++;
+
+    document.querySelectorAll(".photo").forEach(photo => photo.style.visibility = "hidden");
+
     if (currPhoto <= 10) {
-        const photoHolder = document.getElementById("photo-holder");
-        photoHolder.style.visibility = "visible";
-        photoHolder.style.backgroundImage = `url(images/photo${currPhoto}.png)`;
+        document.getElementById("photo-holder").style.visibility = "visible";
+
+        const photoDiv = document.getElementById("photo" + currPhoto);
+        photoDiv.style.visibility = "visible";
+        photoDiv.style.backgroundImage = `url(images/photo${currPhoto}.png)`;
     }
     else {
         document.getElementById("photo-holder").style.visibility = "hidden";
         currPhoto = 0;
     }
-    console.log(currPhoto);
 }
 
 function start() {
@@ -105,7 +104,7 @@ function start() {
 
     setInterval(() => setTime(), 1000); // start clock
 
-    document.getElementsByClassName("face")[0].addEventListener("click", () => togglePhotos);
+    document.getElementsByClassName("face")[0].addEventListener("click", togglePhotos);
 }
 
 start();
