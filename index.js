@@ -64,7 +64,7 @@ function preLoadImages() {
         { selector: ".butterfly-blue",/*   */ url: "images/butterfly_blue.png" },
         { selector: ".butterfly-purple",/* */ url: "images/butterfly_purple.png" },
         { selector: ".face",/*             */ url: "images/face.png" },
-        { selector: "#photo1",/*           */ url: "images/photo1.png" }, // load only the first, to reduce loading time
+        { selector: "#photo1",/*           */ url: "images/photo1.png" }, // priming the first photo, to reduce loading time (rest loads onclick)
     ];
     let imagesLoaded = 0;
 

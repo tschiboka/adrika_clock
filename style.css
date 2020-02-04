@@ -51,8 +51,7 @@ body { font-family: "Myriad", sans-serif; }
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: 50% 50% no-repeat;
-    background-size: cover;
+    background: 50% 50%/cover no-repeat;
     animation: bg 1.5s linear;
 }
 
@@ -63,9 +62,7 @@ body { font-family: "Myriad", sans-serif; }
 }
 
 .face, #photo-holder {
-    background: no-repeat;
-    background-position: 50% 50%;
-    background-size: contain;
+    background: 50% 50%/contain no-repeat;
     animation: face 1.5s linear;
     cursor: pointer;
 }
@@ -88,9 +85,7 @@ body { font-family: "Myriad", sans-serif; }
 
 .arc, .line, .butterfly {
     position: absolute;
-    background-position: 50% 50%;
-    background-size: contain;
-    background-repeat: no-repeat;
+    background: 50% 50%/contain no-repeat;
     transform-origin: 50% 50%;
 }
 
@@ -119,9 +114,7 @@ body { font-family: "Myriad", sans-serif; }
 
 .clock-helperline, .clockface {
     position: absolute;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background: center/cover no-repeat;
 }
 
 .time-box {
@@ -345,10 +338,27 @@ body { font-family: "Myriad", sans-serif; }
     to { transform: scale(100%); }
 }
 
+@-webkit-keyframes bg {
+    from { 
+        transform: scale(96%); 
+        -webkit-transform: scale(96%);
+    }
+    to { 
+        transform: scale(100%); 
+        -webkit-transform: scale(100%); 
+    }
+}
+
 @keyframes face {
     0% { filter: grayscale(100%) blur(5px); }
     65% { filter: grayscale(70%) blur(1px); }
     100% { filter: grayscale(0) blur(0); }
+}
+
+@-webkit-keyframes face {
+    0% { -webkit-filter: grayscale(100%) blur(5px); }
+    65% { -webkit-filter: grayscale(70%) blur(1px); }
+    100% { -webkit-filter: grayscale(0) blur(0); }
 }
 
 @keyframes arc {
@@ -356,15 +366,31 @@ body { font-family: "Myriad", sans-serif; }
     to { transform: rotate(360deg); }
 }
 
+@-webkit-keyframes arc {
+    from { -webkit-transform: rotate(1deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+
 @keyframes lion {
     from { transform: translate(-100vh, 100vh); }
     to { transform: translate(0, 0); }
+}
+
+@-webkit-keyframes lion {
+    from { -webkit-transform: translate(-100vh, 100vh); }
+    to { -webkit-transform: translate(0, 0); }
 }
 
 @keyframes palmtree {
     0% { transform: translate(-100vh, 100vh); }
     25% { transform: translate(-100vh, 100vh); }
     100% { transform: translate(0, 0); }
+}
+
+@-webkit-keyframes palmtree {
+    0% { -webkit-transform: translate(-100vh, 100vh); }
+    25% { -webkit-transform: translate(-100vh, 100vh); }
+    100% { -webkit-transform: translate(0, 0); }
 }
 
 @keyframes watercolor-pink {
@@ -377,6 +403,16 @@ body { font-family: "Myriad", sans-serif; }
     100% { transform: translate(0, 0); }
 }
 
+@-webkit-keyframes watercolor-pink {
+    0% { -webkit-transform: translate(-100vh, 100vh); }
+    45% { -webkit-transform: translate(-100vh, 100vh); }
+    50% { -webkit-transform: translate(-95vh, 95vh); }
+    78% { -webkit-transform: translate(6vh, -6vh); }    
+    87% { -webkit-transform: translate(-1.2vh, 1.2vh); }
+    95% { -webkit-transform: translate(0.7vh, -0.7vh); }
+    100% { -webkit-transform: translate(0, 0); }
+}
+
 @keyframes nail {
     0% { transform: translateY(40vh); }
     84% { transform: translateY(45vh); }
@@ -385,10 +421,24 @@ body { font-family: "Myriad", sans-serif; }
     100% { transform: translateY(0); }
 }
 
+@-webkit-keyframes nail {
+    0% { -webkit-transform: translateY(40vh); }
+    84% { -webkit-transform: translateY(45vh); }
+    87% { -webkit-transform: translateY(-9vh); }
+    95% { -webkit-transform: translateY(6vh); }
+    100% { -webkit-transform: translateY(0); }
+}
+
 @keyframes galaxy {
     0% { transform: translate(12vh, -12vh)}
     95% { transform: translate(12vh, -12vh)}
     100% { transform: translate(0, 0)}
+}
+
+@-webkit-keyframes galaxy {
+    0% { -webkit-transform: translate(12vh, -12vh)}
+    95% { -webkit-transform: translate(12vh, -12vh)}
+    100% { -webkit-transform: translate(0, 0)}
 }
 
 @keyframes butterfly {
@@ -400,9 +450,25 @@ body { font-family: "Myriad", sans-serif; }
     100% { transform: translate(0, 0) rotate(0.5deg) rotate3d(1, 1, 1, 15deg); }
 }
 
+@-webkit-keyframes butterfly {
+    0% { -webkit-transform: translate(0, 0) rotate(0.5deg) rotate3d(1, 1, 1, 15deg); }
+    20% { -webkit-transform: translate(1px, -1px) rotate(-0.5deg) rotate3d(0, 0, 0, 0); }
+    40% { -webkit-transform: translate(-1px, -1px) rotate(1deg) rotate3d(-1, -1, -1, 15deg); }
+    60% { -webkit-transform: translate(1px, 1px) rotate(-0.5deg) rotate3d(0, 0, 0, 0); }
+    80% { -webkit-transform: translate(-1px, 1px) rotate(0.5deg) rotate3d(1, 1, 1, -15deg); }
+    100% { -webkit-transform: translate(0, 0) rotate(0.5deg) rotate3d(1, 1, 1, 15deg); }
+}
+
 @keyframes clockface {
     0% { transform: rotate(0); }
     90% { transform: rotate(0); }
     95% { transform: rotate(-7deg); }
     100% { transform: rotate(-6deg); }
+}
+
+@-webkit-keyframes clockface {
+    0% { -webkit-transform: rotate(0); }
+    90% { -webkit-transform: rotate(0); }
+    95% { -webkit-transform: rotate(-7deg); }
+    100% { -webkit-transform: rotate(-6deg); }
 }
